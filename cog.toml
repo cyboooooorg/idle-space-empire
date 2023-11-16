@@ -19,3 +19,6 @@ owner = "Cyboooooorg"
 authors = [
   { signature = "Cyborg", username = "Cyboooooorg" }
 ]
+
+[commit_types]
+chore = { changelog_title = "", omit_from_changelog = true }
