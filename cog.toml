@@ -22,3 +22,13 @@ authors = [
 
 [commit_types]
 chore = { changelog_title = "", omit_from_changelog = true }
+
+# ? Setting git hooks
+[git_hooks.commit-msg]
+path = "hooks/git-commit-msg.sh"
+
+[git_hooks.pre-push]
+path = "hooks/git-pre-push.sh"
+
+[git_hooks.post-rewrite]
+path = "hooks/git-post-rewrite.sh"
