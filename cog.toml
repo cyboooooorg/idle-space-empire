@@ -21,7 +21,6 @@ authors = [
 ]
 
 [commit_types]
-<<<<<<< HEAD
 chore = { changelog_title = "", omit_from_changelog = true }
 
 # ? Setting git hooks
@@ -33,6 +32,3 @@ path = "hooks/git-pre-push.sh"
 
 [git_hooks.post-rewrite]
 path = "hooks/git-post-rewrite.sh"
-=======
-chore = { changelog_title = "", omit_from_changelog = true }
->>>>>>> 2a370f2 (chore: remove chore commits from changelog)
