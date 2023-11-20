@@ -44,7 +44,32 @@ This is a simple idle game where you have to build a space empire. You start wit
 
 ### How to Install
 
-<!-- TODO: Add "How to Install" guidelines -->
+#### Requirements
+
+This repository uses Docker to run the project. You can install Docker and Docker Compose by following the instructions on their respective websites.
+
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Taskfile](https://taskfile.dev/#/installation)
+
+This project uses conventional commits to manage the versioning of the project. You can find more information about conventional commits [here](https://www.conventionalcommits.org/en/v1.0.0/).
+
+In order to enforce conventional commits, I use **_[cocogitto](https://docs.cocogitto.io)_** which is a tool that checks the commit messages and prevents you from pushing commits that do not follow the conventional commits guidelines. You can install **_cocogitto_** by following the instructions on their [GitHub repository](https://github.com/cocogitto/cocogitto).
+
+> [!NOTE]
+> Once you have installed **_cocogitto_**, you will have to run the command `cog install-hook` in the root directory of the project to install the hook that will check your commits.
+
+If you don't want to install **_cocogitto_**, you can still use this repository but you will have to manually check that your commits follow the conventional commits guidelines or you can use the VSCode extension [Conventional Commits](https://marketplace.visualstudio.com/items?itemName=vivaxy.vscode-conventional-commits) which will help you write conventional commits.
+
+You can install this project by cloning this repository:
+
+> [!NOTE]
+> Please use the SSH link since it is more secure than the HTTPS link.
+
+```bash
+git clone git@github.com:Cyboooooorg/idle-space-empire.git
+```
 
 ### How to Contribute
 
