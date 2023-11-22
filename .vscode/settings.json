@@ -5,6 +5,7 @@
         "config",
         "core",
         "workflow",
-        "docker"
+        "docker",
+        "ide"
     ]
 }
