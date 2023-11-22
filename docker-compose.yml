@@ -1,0 +1,56 @@
+version: '3.7'
+
+networks:
+  # ---------------------------------------------------------------------------------------------------- #
+  # Default network used by the containers.
+  # This network is created by default by docker.
+  # It's used here in order to protect the database container from the outside world.
+  # ---------------------------------------------------------------------------------------------------- #
+  default:
+    driver: bridge
+
+volumes:
+  # ---------------------------------------------------------------------------------------------------- #
+  # Virtual environment volume
+  # The virtual environment volume is the volume that will allow the virtual environment to be shared
+  # between containers and prevent it to be stored on the host machine.
+  # ---------------------------------------------------------------------------------------------------- #
+  venv-virtual-volume:
+    driver: local
+
+  # ---------------------------------------------------------------------------------------------------- #
+  # Workspace volume
+  # The Workspace volume is the volume that will link the workspace directory to the container.
+  # ---------------------------------------------------------------------------------------------------- #
+  workspace-physical-volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./
+
+services:
+  # ---------------------------------------------------------------------------------------------------- #
+  # API application service container
+  # ---------------------------------------------------------------------------------------------------- #
+  app-service-api:
+    build:
+      context: ./
+      dockerfile: .docker/idle-space-empire/Dockerfile
+      target: dev-build
+      args:
+        - UID=${UID}
+    image: idle-space-empire:local-dev
+    container_name: idle-space-empire_api-srv
+    restart: unless-stopped
+    volumes:
+      # ? We mount the conainters `.venv` directory to the docker engine in order prevent it to be stored
+      # ? on the host machine and to allow it to be shared with other containers.
+      - venv-virtual-volume:/opt/.venv:rw
+      # ? We mount the whole project directory to the `workspace` directory in the container in order to
+      # ? allow the container to access the project files and keep them in sync with the host machine.
+      - workspace-physical-volume:/home/idle-space-empire/workspace:rw
+    ports:
+      - ${APP_SERVICE_API_WEB_PORT-8080}:80
+    networks:
+      - default
