@@ -4,6 +4,7 @@
         "api",
         "config",
         "core",
-        "workflow"
+        "workflow",
+        "docker"
     ]
 }
