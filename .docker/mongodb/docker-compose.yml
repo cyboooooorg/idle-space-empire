@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  db-service-mongodb:
+    image: mongo:7.0.3
+    container_name: ise_mongodb-srv
+    restart: always
+    env_file:
+      - ./config/mongodb.env
+    volumes:
+      - mongodb-volume:/data/db:rw
+    ports:
+      - ${DB_SERVICE_MONOGO_PORT-27017}:27017
+    networks:
+      - default
+
+volumes:
+  # ---------------------------------------------------------------------------------------------------- #
+  # MongoDB Volume
+  # ---------------------------------------------------------------------------------------------------- #
+  mongodb-volume:
+    driver: local

@@ -41,8 +41,12 @@ services:
       args:
         - UID=${UID}
     image: idle-space-empire:local-dev
-    container_name: idle-space-empire_api-srv
+    container_name: ise_api-srv
     restart: unless-stopped
+    depends_on:
+      - db-service-mongodb
+    env_file:
+      - .docker/idle-space-empire/config/ise.env
     volumes:
       # ? We mount the conainters `.venv` directory to the docker engine in order prevent it to be stored
       # ? on the host machine and to allow it to be shared with other containers.
@@ -54,3 +58,6 @@ services:
       - ${APP_SERVICE_API_WEB_PORT-8080}:80
     networks:
       - default
+
+include:
+  - .docker/mongodb/docker-compose.yml
