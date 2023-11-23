@@ -28,6 +28,7 @@
                 "github.vscode-pull-request-github",
                 "github.vscode-github-actions",
                 // ? Project related extensions
+                "mongodb.mongodb-vscode",
                 "postman.postman-for-vscode",
                 "aaron-bond.better-comments",
                 "nickdemayo.vscode-json-editor",
