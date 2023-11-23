@@ -1,0 +1,11 @@
+{
+    "conventionalCommits.scopes": [
+        "app",
+        "api",
+        "config",
+        "core",
+        "workflow",
+        "docker",
+        "ide"
+    ]
+}

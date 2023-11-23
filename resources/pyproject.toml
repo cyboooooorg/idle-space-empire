@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "idle-space-empire"
+version = "0.0.0"
+description = ""
+authors = ["Martin Crampon <martin.crampon@hotmail.fr>"]
+readme = ""
+packages = []
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.104.1"
+uvicorn = "^0.24.0.post1"
+pymongo = "^4.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
