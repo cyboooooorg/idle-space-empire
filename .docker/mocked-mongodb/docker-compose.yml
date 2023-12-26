@@ -4,7 +4,7 @@ services:
   db-service-mongodb:
     image: mongo:7.0.3
     container_name: ise_mongodb-srv
-    restart: always
+    restart: unless-stopped
     env_file:
       - ./config/mongodb.env
     volumes:
