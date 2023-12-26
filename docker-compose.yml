@@ -46,7 +46,7 @@ services:
     depends_on:
       - db-service-mongodb
     env_file:
-      - .docker/idle-space-empire/config/ise.env
+      - .docker/idle-space-empire/config/.env
     volumes:
       # ? We mount the conainters `.venv` directory to the docker engine in order prevent it to be stored
       # ? on the host machine and to allow it to be shared with other containers.
