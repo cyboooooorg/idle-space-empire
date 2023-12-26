@@ -60,4 +60,4 @@ services:
       - default
 
 include:
-  - .docker/mongodb/docker-compose.yml
+  - .docker/mocked-mongodb/docker-compose.yml
