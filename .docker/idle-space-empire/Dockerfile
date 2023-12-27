@@ -139,7 +139,7 @@ COPY --from=build --chown=${USR_NAME}:${GRP_NAME} ${VENV_PARENT_DIR}/.venv ${VEN
 COPY --from=build --chown=${USR_NAME}:${GRP_NAME} /bin/docker-entrypoint* /bin/
 
 # Copy the application files
-COPY --chown=${USR_NAME}:${GRP_NAME} resources/src ${USR_HOME}/app
+COPY --chown=${USR_NAME}:${GRP_NAME} resources/ ${USR_HOME}/app
 
 # Set the entrypoint
 ENTRYPOINT ["docker-entrypoint"]
