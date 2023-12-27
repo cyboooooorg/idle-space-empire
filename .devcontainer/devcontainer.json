@@ -16,18 +16,16 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                // ? Python related extensions
+                "ms-azuretools.vscode-docker",
                 "ms-python.python",
                 "ms-python.vscode-pylance",
                 "ms-python.black-formatter",
                 "mgesbert.python-path",
                 "charliermarsh.ruff",
-                // ? GitHub related extensions
                 "github.copilot",
                 "github.copilot-chat",
                 "github.vscode-pull-request-github",
                 "github.vscode-github-actions",
-                // ? Project related extensions
                 "mongodb.mongodb-vscode",
                 "postman.postman-for-vscode",
                 "aaron-bond.better-comments",
@@ -37,13 +35,11 @@
                 "mikestead.dotenv",
                 "bierner.github-markdown-preview",
                 "task.vscode-task",
-                // ? Git related extensions
                 "vivaxy.vscode-conventional-commits",
                 "codezombiech.gitignore",
                 "waderyan.gitblame",
                 "mhutchie.git-graph",
                 "donjayamanne.githistory",
-                // ? Bonus extensions
                 "PKief.material-icon-theme"
             ]
         }
