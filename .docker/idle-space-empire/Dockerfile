@@ -23,7 +23,7 @@ ARG USR_HOME=/home/${USR_NAME}
 # Stage 01 - Build
 # This stage is used to build the application (for development and production)
 # ------------------------------------------------------------------------------------------ #
-FROM python:3.12.0-slim-bullseye AS build
+FROM python:3.12.0-bullseye AS build
 
 # Re declare arguments
 ARG VENV_PARENT_DIR
@@ -110,7 +110,7 @@ EXPOSE 8000
 # Stage 02 - Runtime
 # This stage is used to run the application in production
 # ------------------------------------------------------------------------------------------ #
-FROM python:3.12.0-slim-bullseye AS runtime
+FROM python:3.12.0-bullseye AS runtime
 
 # Re declare arguments
 ARG VENV_PARENT_DIR
