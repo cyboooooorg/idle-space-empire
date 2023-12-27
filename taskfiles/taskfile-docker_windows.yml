@@ -1,17 +1,15 @@
 version: "3"
 
-vars:
-  CONTAINER_NAMES:
-    powershell: docker ps -a --format '{{"{{"}}.Names{{"}}"}}' --filter "name={{ .DOCKER_CONTAINERS_PREFIX }}" | awk '{printf("%s,", $0)}'
-
 tasks:
   show:
     desc: Show containers described in the stack
     aliases: [s]
     preconditions:
-      - sh: test -f .env
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
+      - powershell: Test-Path ../.env
         msg: "File .env not found"
-      - sh: test -f docker-compose.yml
+      - powershell: Test-Path ../docker-compose.yml
         msg: "File docker-compose.yml not found"
     cmds:
       - docker ps -as --format 'table {{"{{"}}.ID{{"}}"}}\t{{"{{"}}.Names{{"}}"}}\t{{"{{"}}.Image{{"}}"}}\t{{"{{"}}.Status{{"}}"}}\t{{"{{"}}.Size{{"}}"}}' --filter "name={{ .DOCKER_CONTAINERS_PREFIX }}"
@@ -21,9 +19,11 @@ tasks:
     desc: Show containers, volumes and networks described in the stack
     aliases: [sa]
     preconditions:
-      - sh: test -f .env
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
+      - powershell: Test-Path ../.env
         msg: "File .env not found"
-      - sh: test -f docker-compose.yml
+      - powershell: Test-Path ../docker-compose.yml
         msg: "File docker-compose.yml not found"
     cmds:
       - echo "======================================================================================================================================================"
@@ -44,6 +44,8 @@ tasks:
     desc: Build services described in the stack
     aliases: [b]
     preconditions:
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
       - powershell: Test-Path ../.env
         msg: "File .env not found"
       - powershell: Test-Path ../docker-compose.yml
@@ -56,6 +58,8 @@ tasks:
     desc: Create (build if images does not exists) and start containers described in the stack
     aliases: [u]
     preconditions:
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
       - powershell: Test-Path ../.env
         msg: "File .env not found"
       - powershell: Test-Path ../docker-compose.yml
@@ -68,6 +72,8 @@ tasks:
     desc: Stop and remove containers and networks described in the stack
     aliases: [d]
     preconditions:
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
       - powershell: Test-Path ../.env
         msg: "File .env not found"
       - powershell: Test-Path ../docker-compose.yml
@@ -80,6 +86,8 @@ tasks:
     desc: Stop and remove containers, networks and volumes described in the stack
     aliases: [df]
     preconditions:
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
       - powershell: Test-Path ../.env
         msg: "File .env not found"
       - powershell: Test-Path ../docker-compose.yml
@@ -92,10 +100,15 @@ tasks:
     desc: Show logs for services
     aliases: [l]
     preconditions:
+      - powershell: -not(Test-Path /.dockerenv)
+        msg: "You are in docker container. Don't launch this task in docker container."
       - powershell: Test-Path ../.env
         msg: "File .env not found"
       - powershell: Test-Path ../docker-compose.yml
         msg: "File docker-compose.yml not found"
+    vars:
+      CONTAINER_NAMES:
+        powershell: docker ps -a --format '{{"{{"}}.Names{{"}}"}}' --filter "name={{ .DOCKER_CONTAINERS_PREFIX }}" | awk '{printf("%s,", $0)}'
     cmds:
       - cmd: wt docker logs -f {{ .ITEM }}
         for:
