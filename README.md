@@ -1,3 +1,9 @@
+<div align="center" markdown="1">
+
+<img src="./docs/pictures/ise_logo.png" alt="Idle Space Empire Logo" width="300"/>
+
+</div>
+
 # Idle Space Empire
 
 <div align="center" markdown="1">
