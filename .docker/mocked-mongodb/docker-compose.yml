@@ -6,7 +6,7 @@ services:
     container_name: ise_mongodb-srv
     restart: unless-stopped
     env_file:
-      - ./config/mongodb.env
+      - ./config/.env
     volumes:
       - mongodb-volume:/data/db:rw
     ports:
